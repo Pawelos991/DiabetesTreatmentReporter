@@ -1,0 +1,120 @@
+@use './constants';
+
+.layout-side-bar.p-card {
+  position: fixed;
+  top: constants.$top-bar-height + constants.$layout_spacing;
+  width: constants.$side-bar-width;
+  bottom: constants.$layout_spacing;
+  left: constants.$layout_spacing;
+
+  .layout-side-bar-content {
+    padding-top: 1.25rem;
+  }
+}
+
+.layout-side-bar {
+  padding: 0;
+
+  & > .p-card-body,
+  & > .p-card-body > .p-card-content,
+  .p-scrollpanel {
+    height: 100%;
+  }
+
+  &.p-card .p-card-body,
+  &.p-card .p-card-body > .p-card-content,
+  menu {
+    padding: 0;
+  }
+
+  .user-info {
+    text-align: center;
+    margin: 0 1rem;
+
+    .name {
+      font-size: larger;
+    }
+
+    .role {
+      font-size: medium;
+    }
+    .jednostka-organizacyjna,
+    .email {
+      margin-top: 0.4rem;
+      margin-bottom: 1rem;
+    }
+
+    .przerwa-container {
+      @extend .jednostka-organizacyjna;
+      color: darkred;
+      display: grid;
+    }
+  }
+
+  menu {
+    .layout-sub-menu {
+      padding-left: 1em;
+      list-style-type: none;
+      overflow: hidden;
+
+      max-height: 1800px;
+      transition: max-height 0.4s;
+
+      &.collapsed {
+        max-height: 0;
+      }
+
+      .menu-item-container {
+        display: flex;
+        cursor: pointer;
+        padding: 0.65rem;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: transform 0.25s;
+
+        &:hover {
+          transform: translateX(0.5em);
+        }
+
+        &.collapsed {
+          .collapse-icon {
+            transform: rotate(-180deg);
+          }
+        }
+        .collapse-icon {
+          transition: transform 0.4s;
+        }
+
+        i {
+          height: min-content;
+          color: var(--text-color);
+        }
+
+        .menu-item-label {
+          padding-left: 0.5em;
+          color: #495057;
+          flex-grow: 1;
+
+          &:visited {
+            color: #495057;
+          }
+        }
+
+        &.current .menu-item-label {
+          color: #6fde63;
+        }
+      }
+    }
+  }
+
+  transition: transform constants.$transition_time;
+
+  &.collapsed {
+    transform: translateX(-(constants.$side-bar-width + constants.$layout_spacing));
+  }
+
+  @media screen and (max-width: constants.$mobile-version-width) {
+    transform: translateX(-(constants.$side-bar-width + constants.$layout_spacing));
+  }
+}

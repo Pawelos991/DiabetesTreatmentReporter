@@ -1,0 +1,5 @@
+@use '../Layout/constants';
+
+.toast.p-toast-top-right {
+  top: constants.$top-bar-height + constants.$layout_spacing * 2;
+}

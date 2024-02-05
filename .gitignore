@@ -1,0 +1,8 @@
+/.idea/
+/frontend/src/api/
+/node_modules/
+/frontend/node_modules/
+/frontend/.eslintcache
+/frontend/.eslintrc.json
+/frontend/.prettierignore
+/frontend/.prettierrc

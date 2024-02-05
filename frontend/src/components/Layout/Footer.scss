@@ -1,0 +1,45 @@
+$mobile-version-width: 700px;
+
+.layout-footer {
+  padding-top: 0.5rem;
+  margin-top: 1rem;
+  border-top: 1px solid var(--surface-border);
+
+  width: 100%;
+  text-align: center;
+
+  @media screen and (width > $mobile-version-width) {
+    display: flex;
+    align-items: end;
+  }
+
+  .closing-element {
+    width: 30%;
+
+    @media screen and (max-width: $mobile-version-width) {
+      width: 100%;
+    }
+  }
+
+  .closing-element.left {
+    @media screen and (max-width: $mobile-version-width) {
+      display: none;
+    }
+  }
+
+  .project-name {
+    flex-grow: 1;
+    font-weight: bold;
+    color: #0096ff;
+  }
+
+  .version {
+    color: gray;
+    font-size: 0.9em;
+    margin-left: 1em;
+
+    @media screen and (max-width: $mobile-version-width) {
+      margin-top: 0.5em;
+    }
+  }
+}

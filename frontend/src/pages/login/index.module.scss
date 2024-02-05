@@ -1,0 +1,104 @@
+.wrapper {
+  max-width: 70rem;
+}
+
+.version {
+  border-top: 1px solid var(--surface-border);
+  color: gray;
+  font-size: 0.9em;
+  font-family: monospace;
+  margin-left: 1em;
+  width: 90%;
+  max-width: 1000px;
+  text-align: center;
+}
+
+.btn {
+  //background: green !important;
+  margin: 15px;
+  padding: 10px;
+}
+
+.btnPowrot {
+  //background: green !important;
+  margin: 15px;
+  padding: 10px;
+  float: right;
+}
+
+.infoBox {
+  margin-top: 3rem;
+  padding-left: 2rem;
+
+  div:first-child {
+    padding-bottom: 0.3rem;
+  }
+}
+
+:global(.high-contrast) {
+  .pageRoot {
+    background-image: none;
+  }
+}
+
+.loginBox {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+  justify-content: center;
+}
+
+.authLinks {
+  font-weight: bold;
+  padding-top: 2rem;
+  padding-left: 2rem;
+  margin-right: 1em;
+
+  & > li {
+    margin: 0;
+    padding: 0.6rem;
+    max-width: 32rem;
+    list-style: none;
+
+    & > a {
+      width: 100%;
+
+      img {
+        height: 2.5em;
+        margin-right: 15px;
+      }
+    }
+  }
+}
+
+.linkHighlight {
+  color: var(--primary-color);
+}
+
+.loginForm {
+  position: relative;
+
+  label {
+    font-size: 1.2rem;
+  }
+
+  button {
+    background-color: var(--primary-color);
+
+    &:hover {
+      background-color: var(--orange-600) !important;
+    }
+  }
+
+  &::after {
+    position: absolute;
+    right: 2rem;
+    left: 2rem;
+    top: 100%;
+    bottom: 0;
+
+    border-bottom: 1px solid var(--surface-border);
+    outline-offset: 5px;
+    content: '';
+  }
+}

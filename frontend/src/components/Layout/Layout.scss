@@ -1,0 +1,45 @@
+@use './constants';
+
+.layout-wrapper {
+  .layout-content {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: (constants.$top-bar-height + constants.$layout_spacing)
+      constants.$layout_spacing constants.$layout_spacing
+      (constants.$side-bar-width + constants.$layout_spacing * 2);
+    margin: 0;
+
+    transition: padding constants.$transition_time;
+
+    &.side-bar-collapsed {
+      padding-left: constants.$layout_spacing;
+    }
+    @media screen and (max-width: constants.$mobile-version-width) {
+      padding-left: constants.$layout_spacing;
+    }
+
+    nav {
+      margin-bottom: constants.$layout_spacing;
+
+      .breadcrumb-item {
+        color: var(--text-color);
+      }
+    }
+
+    main {
+      flex-grow: 1;
+
+      & > * {
+      }
+
+      &.variant-unauthorized {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+  }
+}

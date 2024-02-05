@@ -1,0 +1,85 @@
+@use './constants';
+@use 'sass:math';
+
+.layout-top-bar {
+  position: fixed;
+  height: constants.$top-bar-height;
+  z-index: 997;
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding: 0 0.5rem;
+  background-color: var(--surface-card);
+  transition: left 1s;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.02), 0 0 2px rgba(0, 0, 0, 0.05),
+    0 1px 4px rgba(0, 0, 0, 0.08);
+
+  .app-logo {
+    svg {
+      height: 4rem;
+      width: auto;
+    }
+  }
+
+  .layout-top-bar-separator {
+    flex: 1;
+  }
+
+  .desktop-switch {
+    @media screen and (max-width: constants.$mobile-version-width) {
+      display: none;
+    }
+  }
+
+  .mobile-switch {
+    @media screen and (width > constants.$mobile-version-width) {
+      display: none;
+    }
+  }
+
+  .layout-top-bar-logo {
+    flex-grow: 1;
+    display: flex;
+    text-align: center;
+    color: var(--surface-900);
+    font-size: 1.5rem;
+    font-weight: 500;
+    border-radius: 12px;
+    text-decoration: none;
+
+    .logo {
+      height: constants.$top-bar-height;
+      margin-right: 0.5rem;
+
+      @media screen and (max-width: math.div(constants.$mobile-version-width * 3, 2)) {
+        height: constants.$top-bar-height - 3.1rem;
+      }
+
+      @media screen and (max-width: constants.$mobile-version-width) {
+        display: none;
+      }
+    }
+  }
+
+  .top-bar-actions {
+    @media screen and (max-width: constants.$mobile-version-width) {
+      display: none;
+    }
+  }
+
+  .top-bar-actions {
+    @media screen and (max-width: constants.$mobile-version-width) {
+      display: none;
+    }
+  }
+
+  .top-bar-actions-menu {
+    display: none;
+
+    @media screen and (max-width: constants.$mobile-version-width) {
+      display: block;
+    }
+  }
+}
