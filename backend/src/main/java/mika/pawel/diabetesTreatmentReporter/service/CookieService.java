@@ -26,7 +26,7 @@ public class CookieService {
    */
   public ResponseCookie createCookieWithToken(String token) {
     return ResponseCookie.from(COOKIE_NAME, token)
-        .secure(true)
+        .secure(false) //For local tests only
         .httpOnly(true)
         .path("/")
         .maxAge(sessionTimeInMs / 1000)

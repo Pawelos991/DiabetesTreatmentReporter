@@ -2,6 +2,7 @@ package mika.pawel.diabetesTreatmentReporter.security;
 
 import java.util.Collection;
 import lombok.RequiredArgsConstructor;
+import mika.pawel.diabetesTreatmentReporter.dto.user.UserLoginRequest;
 import mika.pawel.diabetesTreatmentReporter.exception.IncorrectUsernameOrPasswordException;
 import mika.pawel.diabetesTreatmentReporter.service.UserService;
 import org.springframework.security.core.Authentication;
@@ -15,9 +16,9 @@ public class AuthenticationProvider {
   private final CustomUserDetailsService customUserDetailsService;
   private final UserService userService;
 
-  public Authentication authenticate(String username, String password) {
-    if (userService.checkUsernameAndPassword(username, password)) {
-      return prepareAuthentication(username);
+  public Authentication authenticate(UserLoginRequest userLoginRequest) {
+    if (userService.checkUsernameAndPassword(userLoginRequest.getUsername(), userLoginRequest.getPassword())) {
+      return prepareAuthentication(userLoginRequest.getUsername());
     }
     throw new IncorrectUsernameOrPasswordException();
   }

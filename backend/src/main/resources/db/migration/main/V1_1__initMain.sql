@@ -17,7 +17,7 @@ CREATE TABLE public.user
     id integer NOT NULL PRIMARY KEY,
     username varchar(255) NOT NULL,
     password varchar(256) NOT NULL,
-    salt varchar(20) NOT NULL,
+    salt varchar(255) NOT NULL,
     user_role char NOT NULL,
     name varchar(255) NOT NULL,
     surname varchar(255) NOT NULL,

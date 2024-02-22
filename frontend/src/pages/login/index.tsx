@@ -43,8 +43,10 @@ export default function LoginPage() {
   const handleSubmit: SubmitHandler<Values> = async (values) => {
     try {
       const login = await authApi.login({
+      body: {
         username: values.login!,
         password: SHA256(values.password!).toString(enc.Hex),
+      }
       });
       if (login.success) {
         const authResponse = await authApi.checkAuthentication();

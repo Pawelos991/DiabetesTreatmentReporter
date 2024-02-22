@@ -3,8 +3,10 @@ package mika.pawel.diabetesTreatmentReporter.controller;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import mika.pawel.diabetesTreatmentReporter.dto.BasicResponse;
+import mika.pawel.diabetesTreatmentReporter.dto.user.UserLoginRequest;
 import mika.pawel.diabetesTreatmentReporter.security.AuthenticationProvider;
 import mika.pawel.diabetesTreatmentReporter.security.AuthenticationResponse;
 import mika.pawel.diabetesTreatmentReporter.security.UserAuthenticationResult;
@@ -18,6 +20,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,10 +37,9 @@ public class AuthenticationController {
   private final CookieService cookieService;
 
   @PostMapping("/login")
-  public ResponseEntity<BasicResponse> login(@RequestParam String username,
-                             @RequestParam String password,
+  public ResponseEntity<BasicResponse> login(@RequestBody @Valid UserLoginRequest userLoginRequest,
                              HttpServletResponse response) {
-    Authentication authentication = authenticationProvider.authenticate(username, password);
+    Authentication authentication = authenticationProvider.authenticate(userLoginRequest);
     SecurityContextHolder.getContext().setAuthentication(authentication);
 
     UserAuthenticationResult result = authenticationService.loginUser(authentication.getName());
